@@ -4,9 +4,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 
-localStorage.setItem("token", "any");
-// localStorage.removeItem("token");
-
 class App extends Component {
   render() {
     return (
