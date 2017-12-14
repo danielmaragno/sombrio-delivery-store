@@ -3,6 +3,7 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
 import 'bulma/css/bulma.css';
 
+import Navbar from './Navbar';
 import HomePage from './HomePage';
 import Pedidos from './Pedidos';
 
@@ -20,13 +21,7 @@ export default class Home extends React.Component {
     return (
       <div>
         {/* NAV */}
-        <nav className="navbar is-tab has-shadow">
-          <div className="navbar-menu">
-            <Link to="/pos/home" className="navbar-item">Home</Link>
-            <Link to="/pos/pedidos" className="navbar-item">Pedidos</Link>
-          </div>
-        </nav>
-      
+        <Navbar />
 
         {/* MAIN SECTION */}
         <section className="section">
