@@ -10,6 +10,11 @@ export function execLogin(info){
 			.then((response) => {
 				// dispatch({type: "EXEC_LOGIN_FULFILLED", payload: response.data})
 				localStorage.setItem("token", response.data.token);
+				localStorage.setItem("posId", response.data.user.id);
+				localStorage.setItem("posName", response.data.user.name);
+				localStorage.setItem("posDeliveryPrice", response.data.user.deliveryPrice);
+				localStorage.setItem("posImage", response.data.user.image);
+
 				window.location.assign('/');
 			})
 			.catch((err) => {

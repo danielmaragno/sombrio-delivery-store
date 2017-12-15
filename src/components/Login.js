@@ -51,7 +51,7 @@ class Login extends React.Component {
                         <input className="input is-large" type="password" placeholder="Your Password" ref="passwd"/>
                       </div>
                     </div>
-                    <a className={`button is-block is-info is-large ${this.props.login.isLoading ? 'is-loading' : false}`} onClick={(e) => this.execLogin(e)}>Login</a>
+                    <a type="submit" className={`button is-block is-info is-large ${this.props.login.isLoading ? 'is-loading' : false}`} onClick={(e) => this.execLogin(e)}>Login</a>
                   </form>
                 </div>
               </div>

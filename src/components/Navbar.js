@@ -20,24 +20,34 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      	<nav className="navbar is-tab has-shadow">
-	      <div className="navbar-brand">
-	      	<div className="navbar-burger" onClick={(e)=> this.toggleNavbarMenu(e)}>
-	      		<span></span>
-	      		<span></span>
-	      		<span></span>
-	      	</div>
-	      </div>
+      <nav className="navbar is-tab has-shadow">
+  	    <div className="container">
+          
+          <div className="navbar-brand">
+            <div className="navbar-item">
+              {localStorage.getItem("posName")}
+            </div>
 
-	      <div className={`navbar-menu ${this.props.navbar.navbarMenuActive ? 'is-active' : ''}`}>
-	        <div className="navbar-start">
-		        <Link to="/pos/home" className="navbar-item">Home</Link>
-		        <Link to="/pos/pedidos" className="navbar-item">Pedidos</Link>
-	        </div>
-	        <div className="navbar-end">
-	        	<a href="#" className="navbar-item" onClick={(e)=>this.logout()}>Logout</a>
-	        </div>
-	      </div>
+            <div className="navbar-burger" onClick={(e)=> this.toggleNavbarMenu(e)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div className={`navbar-menu ${this.props.navbar.navbarMenuActive ? 'is-active' : ''}`}>
+            {/*
+            <div className="navbar-start">
+            </div>
+            */}
+            <div className="navbar-end">
+              <Link to="/pos/home" className="navbar-item">Home</Link>
+              <Link to="/pos/pedidos" className="navbar-item">Pedidos</Link>
+              <a href="#" className="navbar-item" onClick={(e)=>this.logout()}>Logout</a>
+            </div>
+          </div>
+
+        </div>
 
 	    </nav>
     );
