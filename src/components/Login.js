@@ -13,6 +13,12 @@ class Login extends React.Component {
     const token = localStorage.getItem('token');
     if(token) window.location.assign('/');
 
+    //setSubmitTrigger
+    // document.getElementById("submit")
+    //   .addEventListener("keyup", (event)=>{
+    //     console.log(event.keyCode);
+    //   });
+
     super(props);
   }
 
@@ -26,6 +32,10 @@ class Login extends React.Component {
     this.props.dispatch(execLogin(info));
   }
 
+  submitFalse(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
@@ -33,25 +43,37 @@ class Login extends React.Component {
           <div className="hero-body">
             <div className="container has-text-centered">
               <div className="column is-4 is-offset-4">
-                <h3 className="title ">Login</h3>
-                <p className="subtitle">Please login to proceed.</p>
+                <h3 className="title has-text-grey">Login</h3>
+                <p className="subtitle has-text-grey">Please login to proceed.</p>
+                
                 <div className="box">
-                  <figure className="avatar">
-                    <img src="https://placehold.it/128x128" />
-                  </figure>
-                  <form>
+                  <form onSubmit={(e) => this.submitFalse(e)}>
                     <div className="field">
-                      <div className="control">
-                        <input className="input is-large" type="email" placeholder="Your Email" ref="id"/>
+                      <div className="control has-icons-left">
+                        <input className="input" type="text" placeholder="id" ref="id"/>
+                        <span className="icon is-small is-left">
+                          <i className="fa fa-user"></i>
+                        </span>
                       </div>
                     </div>
 
                     <div className="field">
-                      <div className="control">
-                        <input className="input is-large" type="password" placeholder="Your Password" ref="passwd"/>
+                      <div className="control has-icons-left">
+                        <input className="input" type="password" placeholder="senha" ref="passwd"/>
+                        <span className="icon is-small is-left">
+                          <i className="fa fa-lock"></i>
+                        </span>
                       </div>
                     </div>
-                    <a type="submit" className={`button is-block is-info is-large ${this.props.login.isLoading ? 'is-loading' : false}`} onClick={(e) => this.execLogin(e)}>Login</a>
+                    <div className="field">
+                      <div className="control">
+                        <button
+                          type="submit"
+                          className={`button is-block is-info ${this.props.login.isLoading ? 'is-loading' : false}`} 
+                          onClick={(e) => this.execLogin(e)}
+                        >Login</button>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>
