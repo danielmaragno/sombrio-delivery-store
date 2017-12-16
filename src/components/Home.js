@@ -6,6 +6,7 @@ import 'bulma/css/bulma.css';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import Pedidos from './Pedidos';
+import Profile from './Profile';
 
 export default class Home extends React.Component {
   
@@ -19,21 +20,23 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="hero is-light is-fullheight">
         {/* NAV */}
         <Navbar />
 
         {/* MAIN SECTION */}
-        <section className="section">
+        <section className="hero-body">
           <div className="container">
             <Switch>
-              <Route path="/pos/home" component={HomePage} />
+              {/*<Route path="/pos/home" component={HomePage} />*/}
               <Route path="/pos/pedidos" component={Pedidos} />
+              <Route path="/pos/profile" component={Profile} />
               <Route path="/pos">
-                <Redirect to="/pos/home" />
+                <Redirect to="/pos/profile" />
               </Route>
             </Switch>
           </div>
+          
         </section>
 
       </div>

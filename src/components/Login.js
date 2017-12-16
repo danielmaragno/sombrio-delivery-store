@@ -26,7 +26,7 @@ class Login extends React.Component {
     const info = {
       scope: 'pos',
       id: this.refs['id'].value,
-      'passwd': this.refs['passwd'].value,
+      passwd: this.refs['passwd'].value,
     }
     console.log(info);
     this.props.dispatch(execLogin(info));
@@ -39,14 +39,19 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <section className="hero is-light is-fullheight">
+        <section className="hero is-dark is-fullheight">
           <div className="hero-body">
             <div className="container has-text-centered">
+              
+              <p className="title is-1">Sombrio Delivery</p>
+              <p className="subtitle">Por favor, faça login para prosseguir</p>
+              
               <div className="column is-4 is-offset-4">
-                <h3 className="title has-text-grey">Login</h3>
-                <p className="subtitle has-text-grey">Please login to proceed.</p>
                 
                 <div className="box">
+                  
+                  <p className="title is-3 has-text-grey">Logista</p>
+
                   <form onSubmit={(e) => this.submitFalse(e)}>
                     <div className="field">
                       <div className="control has-icons-left">
