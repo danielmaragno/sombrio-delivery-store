@@ -13,3 +13,34 @@ export function callPos() {
 	}
 
 }
+
+export function imageChange(image) {
+	return {
+		type: "IMAGE_CHANGE",
+		payload: {
+			image: image
+		}
+	}
+}
+
+export function updateDeliveryPrice(deliveryPrice) {
+
+	return (dispatch) => {
+		dispatch({type: 'LOADING_UPDATE_BUTTON'});
+		axios.put('/pos', {required_data: {deliveryPrice: deliveryPrice}})
+			.then((response) => {
+				dispatch({
+					type: 'UPDATE_POS',
+					payload: {
+						deliveryPrice: deliveryPrice
+					}
+				});
+				dispatch({type: 'UNLOADING_UPDATE_BUTTON'});
+			})
+			.catch((err) => {
+				console.log(err);
+				dispatch({type: 'UNLOADING_UPDATE_BUTTON'});
+			})
+	}
+
+}

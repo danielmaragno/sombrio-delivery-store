@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CurrencyInput from 'react-currency-input';
 
-import { callPos } from '../actions/posActions';
+import { callPos, imageChange, updateDeliveryPrice } from '../actions/posActions';
 
 class Profile extends React.Component {
 
@@ -10,6 +10,30 @@ class Profile extends React.Component {
     super(props);
 
     this.props.dispatch(callPos());
+  }
+
+  handlImageChange() {
+  	const imageURL = this.refs.image.value;
+  	console.log(imageURL);
+
+  	// var reader = new FileReader();
+
+  	// reader.onloadend = function(event) {
+  	// 	this.props.dispatch(imageChange(event.target.result));	
+  	// }
+
+  	// reader.readAsDataURL(imageURL);
+	
+	}
+
+  handleUpdate() {
+  	const deliveryPrice = this.refs.deliveryPrice.state.value * 100;
+  	console.log(deliveryPrice);
+  	this.props.dispatch(updateDeliveryPrice(deliveryPrice));
+  }
+
+  submitFalse(event) {
+    event.preventDefault();
   }
 
   render() {
@@ -22,16 +46,16 @@ class Profile extends React.Component {
 				
 				<div className="column is-5">
 					<figure className="image is-4by3">
-						<img src={localStorage.getItem('posImage')} alt="" />
+						<img src={this.props.pos.image} style={{'border-radius': '25px'}} />
 					</figure>
 				</div>
 			
 				<div className="column is-6 is-offset-1">
-					<form action="">
+					<form onSubmit={(e) => this.submitFalse(e)}>
 		
 						{/*NAME*/}
 						<div className="field">
-							<label className="label">Nome</label>
+							<label className="label">Nome Fantasia</label>
 							<div className="control has-icons has-icons-left">
 								<input type="text" className="input" ref="name" value={this.props.pos.name}/>
 								<span className="icon is-left">
@@ -44,7 +68,7 @@ class Profile extends React.Component {
 						<div className="field">
 							<label className="label">CNPJ</label>
 							<div className="control has-icons has-icons-left">
-								<input type="text" className="input is-danger" ref="cnpj" value={this.props.pos.cnpj}/>
+								<input type="text" className="input" ref="cnpj" value={this.props.pos.cnpj}/>
 								<span className="icon is-left">
 									<i class="fa fa-id-card" aria-hidden="true"></i>
 								</span>
@@ -66,10 +90,29 @@ class Profile extends React.Component {
 						<div className="field">
 							<label className="label">Taxa de Entrega</label>
 							<div className="control has-icons has-icons-left">
-								<CurrencyInput className="input" ref="deliveryPrice" value={this.props.pos.deliveryPrice}/>
+								<CurrencyInput className="input is-success" ref="deliveryPrice" value={this.props.pos.deliveryPrice}/>
 								<span className="icon is-left">R$</span>
 							</div>
-						</div>						
+						</div>
+						
+						{/*IMAGE*/}
+						{/*
+						<div className="field">
+							<div className="file">
+							  <label className="file-label">
+							    <input className="file-input" type="file" ref="image" onChange={(e)=>this.handlImageChange(e)}/>
+							    <span className="file-cta">
+							      <span className="file-icon">
+							        <i className="fa fa-upload"></i>
+							      </span>
+							      <span className="file-label">
+							        Escolha uma nova imagem…
+							      </span>
+							    </span>
+							  </label>
+							</div>					
+						</div>
+						*/}
 
 						{/*Submit*/}
 						<div className="field">
@@ -77,8 +120,8 @@ class Profile extends React.Component {
 	                        <button
 	                          type="submit"
 	                          className={`button is-block is-info ${this.props.pos.isLoading ? 'is-loading' : ''}`} 
-	                          onClick={(e) => this.execLogin(e)}
-	                        >Editar</button>
+	                          onClick={(e) => this.handleUpdate(e)}
+	                        >Update Taxa de Entrega</button>
 	                      </div>
 	                    </div>
 

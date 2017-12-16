@@ -25,6 +25,24 @@ export default function reducer(state=initialState, action){
 				image: action.payload.image
 			}
 		}
+		case 'IMAGE_CHANGE': {
+			return {
+				...state,
+				image: action.payload.image
+			}
+		}
+		case 'UPDATE_POS': {
+			return {
+				...state,
+				deliveryPrice: action.payload.deliveryPrice / 100
+			}
+		}
+		case 'LOADING_UPDATE_BUTTON': {
+			return {...state, isLoading: true}
+		}
+		case 'UNLOADING_UPDATE_BUTTON': {
+			return {...state, isLoading: false}
+		}
 	}
 
 	return state;
