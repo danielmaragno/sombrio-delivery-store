@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ToggleDisplay from 'react-toggle-display';
 
 import 'bulma/css/bulma.css';
 
@@ -70,6 +71,18 @@ class Login extends React.Component {
                         </span>
                       </div>
                     </div>
+          
+                    {/* Error Tag */}
+                      <div className="field">
+                        <div className="control">
+                          <ToggleDisplay show={this.props.login.errorFlag}>
+                            <span className="input tag is-danger is-medium">ID ou senha incorretos</span>
+                          </ToggleDisplay>
+                        </div>
+                      </div>
+
+
+                    {/* Submit */}
                     <div className="field">
                       <div className="control">
                         <button

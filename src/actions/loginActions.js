@@ -18,6 +18,7 @@ export function execLogin(info){
 				window.location.assign('/');
 			})
 			.catch((err) => {
+				// console.log(err.response.status);
 				dispatch({type: "EXEC_LOGIN_REJECTED", payload: {}})
 			})
 	}

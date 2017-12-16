@@ -8,7 +8,7 @@ export default function reducer(state=initialState, action) {
 
 	switch (action.type){
 		case "EXEC_LOGIN": {
-			return {...state, isLoading: true}
+			return {...state, isLoading: true, errorFlag: false}
 		}
 		case "EXEC_LOGIN_REJECTED": {
 			return {...state, isLoading: false, errorFlag: true}
