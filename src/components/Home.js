@@ -20,27 +20,31 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="hero is-light is-fullheight">
+      <div>
+      
         {/* NAV */}
         <Navbar />
 
-        {/* MAIN SECTION */}
-        <section className="hero-body">
+        <section className="section">
+          {/* MAIN SECTION */}
           <div className="container">
-            <Switch>
-              {/*<Route path="/pos/home" component={HomePage} />*/}
-              <Route path="/pos/pedidos" component={Pedidos} />
-              <Route path="/pos/profile" component={Profile} />
-              <Route path="/pos">
-                <Redirect to="/pos/profile" />
-              </Route>
-            </Switch>
-          </div>
           
+              <Switch>
+                {/*<Route path="/pos/home" component={HomePage} />*/}
+                <Route path="/pos/pedidos" component={Pedidos} />
+                <Route path="/pos/profile" component={Profile} />
+                <Route path="/pos">
+                  <Redirect to="/pos/profile" />
+                </Route>
+              </Switch>
+         
+          </div>
+            
+          
+
         </section>
 
       </div>
-
 
     );
   }
