@@ -10,6 +10,7 @@ import Pedidos from './Pedidos';
 import Profile from './Profile';
 
 import { callPos } from '../actions/posActions';
+import { fetchOrders } from '../actions/ordersActions';
 
 class Home extends React.Component {
   
@@ -19,7 +20,17 @@ class Home extends React.Component {
     if(!token) window.location.assign('/login');
 
     super(props);
+
+    // fetch POS
     this.props.dispatch(callPos());
+    
+    // fetch ORDERS
+    this.props.dispatch(fetchOrders(this.props.orders.timeStamp));
+    setInterval(
+      () => this.props.dispatch(fetchOrders(this.props.orders.timeStamp)), 
+      8000
+    );
+
   }
 
   render() {
@@ -56,7 +67,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    pos: state.pos
+    pos: state.pos,
+    orders: state.orders
   }
 };
 

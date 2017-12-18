@@ -26,7 +26,7 @@ export function imageChange(image) {
 export function updateDeliveryPrice(deliveryPrice) {
 
 	return (dispatch) => {
-		dispatch({type: 'LOADING_UPDATE_BUTTON'});
+		dispatch({type: 'LOADING_POS_UPDATE_BUTTON'});
 		axios.put('/pos', {required_data: {deliveryPrice: deliveryPrice}})
 			.then((response) => {
 				dispatch({
@@ -35,11 +35,11 @@ export function updateDeliveryPrice(deliveryPrice) {
 						deliveryPrice: deliveryPrice
 					}
 				});
-				dispatch({type: 'UNLOADING_UPDATE_BUTTON'});
+				dispatch({type: 'UNLOADING_POS_UPDATE_BUTTON'});
 			})
 			.catch((err) => {
 				console.log(err);
-				dispatch({type: 'UNLOADING_UPDATE_BUTTON'});
+				dispatch({type: 'UNLOADING_POS_UPDATE_BUTTON'});
 			})
 	}
 

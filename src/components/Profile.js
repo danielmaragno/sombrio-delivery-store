@@ -47,7 +47,7 @@ class Profile extends React.Component {
 				
 				<div className="column is-5">
 					<figure className="image is-4by3">
-						<img src={this.props.pos.image} style={{'border-radius': '25px'}} />
+						<img src={this.props.pos.image} style={{'borderRadius': '25px'}} />
 					</figure>
 				</div>
 			

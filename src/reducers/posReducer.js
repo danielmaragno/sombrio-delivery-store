@@ -37,10 +37,10 @@ export default function reducer(state=initialState, action){
 				deliveryPrice: action.payload.deliveryPrice / 100
 			}
 		}
-		case 'LOADING_UPDATE_BUTTON': {
+		case 'LOADING_POS_UPDATE_BUTTON': {
 			return {...state, isLoading: true}
 		}
-		case 'UNLOADING_UPDATE_BUTTON': {
+		case 'UNLOADING_POS_UPDATE_BUTTON': {
 			return {...state, isLoading: false}
 		}
 	}

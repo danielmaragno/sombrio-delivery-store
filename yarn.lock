@@ -5273,6 +5273,10 @@ react-scripts@1.0.17:
   optionalDependencies:
     fsevents "1.1.2"
 
+react-time-format@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-time-format/-/react-time-format-0.0.5.tgz#d9c967ec68c9a262fc37c3dd3a381da5bde08e83"
+
 react-toggle-display@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-toggle-display/-/react-toggle-display-2.2.0.tgz#20a66de23e69d5bd975c4bb3cfeaf18748266c49"
