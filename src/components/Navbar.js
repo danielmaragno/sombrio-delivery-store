@@ -20,7 +20,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-tab has-shadow">
+      <nav className="navbar is-tab has-shadow is-dark">
   	    <div className="container">
           
           <div className="navbar-brand">
