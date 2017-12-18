@@ -7,6 +7,7 @@ import 'bulma/css/bulma.css';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import Pedidos from './Pedidos';
+import Pedido from './Pedido';
 import Profile from './Profile';
 
 import { callPos } from '../actions/posActions';
@@ -46,8 +47,9 @@ class Home extends React.Component {
           
               <Switch>
                 {/*<Route path="/pos/home" component={HomePage} />*/}
-                <Route path="/pos/pedidos" component={Pedidos} />
                 <Route path="/pos/profile" component={Profile} />
+                <Route exact path="/pos/pedidos" component={Pedidos} />
+                <Route path="/pos/pedidos/:id" component={Pedido} />
                 <Route path="/pos">
                   <Redirect to="/pos/profile" />
                 </Route>

@@ -60,7 +60,7 @@ class Profile extends React.Component {
 							<div className="control has-icons has-icons-left">
 								<input type="text" className="input" ref="name" value={this.props.pos.name}/>
 								<span className="icon is-left">
-									<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+									<i className="fa fa-shopping-basket" aria-hidden="true"></i>
 								</span>
 							</div>
 						</div>
@@ -71,7 +71,7 @@ class Profile extends React.Component {
 							<div className="control has-icons has-icons-left">
 								<input type="text" className="input" ref="cnpj" value={this.props.pos.cnpj}/>
 								<span className="icon is-left">
-									<i class="fa fa-id-card" aria-hidden="true"></i>
+									<i className="fa fa-id-card" aria-hidden="true"></i>
 								</span>
 							</div>
 						</div>
@@ -82,7 +82,7 @@ class Profile extends React.Component {
 							<div className="control has-icons has-icons-left">
 								<input type="text" className="input" ref="address" value={this.props.pos.address}/>
 								<span className="icon is-left">
-									<i class="fa fa-envelope" aria-hidden="true"></i>
+									<i className="fa fa-envelope" aria-hidden="true"></i>
 								</span>
 							</div>
 						</div>
