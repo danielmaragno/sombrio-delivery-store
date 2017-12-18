@@ -8,8 +8,9 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props)
 
-    this.props.dispatch(callPos());
+    // this.props.dispatch(callPos())
   }
 
   handlImageChange() {

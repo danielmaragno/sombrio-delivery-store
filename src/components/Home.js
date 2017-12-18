@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import 'bulma/css/bulma.css';
 
@@ -8,7 +9,9 @@ import HomePage from './HomePage';
 import Pedidos from './Pedidos';
 import Profile from './Profile';
 
-export default class Home extends React.Component {
+import { callPos } from '../actions/posActions';
+
+class Home extends React.Component {
   
   constructor(props) {
     // init 
@@ -16,6 +19,7 @@ export default class Home extends React.Component {
     if(!token) window.location.assign('/login');
 
     super(props);
+    this.props.dispatch(callPos());
   }
 
   render() {
@@ -49,3 +53,14 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    pos: state.pos
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Home)
