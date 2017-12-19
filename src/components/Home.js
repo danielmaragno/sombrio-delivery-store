@@ -41,7 +41,7 @@ class Home extends React.Component {
         {/* NAV */}
         <Navbar />
 
-        <section className="section">
+        <section className="hero section is-fullheight is-light">
           {/* MAIN SECTION */}
           <div className="container">
           
