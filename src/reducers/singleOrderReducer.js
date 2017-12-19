@@ -1,5 +1,7 @@
 const initialState = {
-	order: {},
+	order: {
+		'_id': "    "
+	},
 	isLoading: false
 }
 
@@ -7,7 +9,7 @@ export default function reducer(state=initialState, action) {
 
 	switch(action.type){
 		case 'FETCH_SINGLE_ORDER': {
-			return {...state, order: payload.order}
+			return {...state, order: action.payload.order}
 		}
 
 		case 'LOADING_ORDER_UPDATE_BUTTON': {

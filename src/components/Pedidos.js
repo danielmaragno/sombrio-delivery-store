@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Time from 'react-time-format'
-
+import StatusTag from'./statusTag';
 
 import { fetchPastOrders, fetchTodayOrders } from '../actions/ordersActions';
 
@@ -18,7 +18,6 @@ class Pedidos extends React.Component {
   
   constructor(props) {
     super(props);
-
   }
 
   handleOrderClick(id) {
@@ -69,15 +68,20 @@ class Pedidos extends React.Component {
                         */}
                         
                         <div 
-                            to="/pos/pedidos/correntes" 
                             className={`panel-block is-active`}
                         >
                             <input
                                 type="date" 
                                 className="input" 
                                 ref="date"
+                                defaultValue={this.inputDateFormat(new Date())}
                                 onChange={(e) => this.handleCalendarChange(e)} 
                             />
+                        </div>
+                        <div 
+                            className={`panel-block`}
+                        >
+                            Total: {this.props.orders[this.props.orders.orderFlag].length}
                         </div>
 
                     </nav>
@@ -101,17 +105,11 @@ class Pedidos extends React.Component {
                                     this.props.orders[this.props.orders.orderFlag].map((order)=>{
                                         return(
                                            <tr onClick={(e) => this.handleOrderClick(order._id)} style={{cursor: 'pointer'}}>
-                                               <td>{order._id}</td>
+                                               <td>{order._id.slice(-4)}</td>
                                                <td><Time value={order.timeStamp} format="DD-MM-YYYY / HH:mm" /></td>
                                                <td>{order.client_name}</td>
                                                <td>{order.items.length}</td>
-                                               <td>{
-                                                      order.status === 'requested' ? <span className="tag is-warning">{orderStatusMap[order.status]}</span> 
-                                                    : order.status === 'confirmed' ? <span className="tag is-success">{orderStatusMap[order.status]}</span> 
-                                                    : order.status === 'canceled' ? <span className="tag is-danger">{orderStatusMap[order.status]}</span> 
-                                                    : order.status === 'on_road' ? <span className="tag is-black">{orderStatusMap[order.status]}</span> 
-                                                    : order.status === 'done' ? <span className="tag is-primary">{orderStatusMap[order.status]}</span> 
-                                                    : ''}</td>
+                                               <td><StatusTag status={order.status} /></td>
                                            </tr>
                                         )
                                     })
